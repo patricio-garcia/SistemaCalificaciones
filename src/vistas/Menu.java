@@ -14,6 +14,8 @@ import servicios.ArchivoServicio;
 public class Menu extends MenuTemplate {
 	AlumnoServicio alumnoServicio = new AlumnoServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
+	String filePath = "C:\\Users\\Patricio\\eclipse-workspace\\SistemaCalificaciones\\src\\input\\";
+	String fileName = "notas.csv";
 	Scanner reader = new Scanner(System.in);
 	
 	public void seleccionOpcion(List<String> pOpcionesMenu) {
@@ -37,7 +39,7 @@ public class Menu extends MenuTemplate {
 				Utilidad.cleanScreen();
 				break;
 			case 4:
-				System.out.println("opcion 4....");
+				cargarDatos(filePath, fileName);
 				Utilidad.cleanScreen();
 				break;
 			case 5:
@@ -56,4 +58,39 @@ public class Menu extends MenuTemplate {
 		} while (!continuar);
 	}
 	
+	public List<String> cargarDatos(String filePath, String fileName) {
+		List<String> listaAlumnos = new ArrayList<String>();
+		String file = filePath + fileName;
+		FileReader fr = null;
+		BufferedReader br = null;
+		
+		try {
+			fr = new FileReader(new File(file));
+			br = new BufferedReader(fr);
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				transformarLinea(linea, listaAlumnos);
+			}
+		} catch (Exception e) {
+				e.printStackTrace();
+		} finally {
+			try {
+				if (null != fr) {
+					fr.close();
+				}
+			} catch (Exception error) {
+				error.printStackTrace();
+			}
+		}
+		System.out.println(listaAlumnos);
+		return null;
+	}
+	
+	private static void transformarLinea(String linea, List<String> listaAlumnos) {
+		String[] tmp = linea.split(",");
+		for (int i = 0; i < tmp.length; i++) {
+			listaAlumnos.add(tmp[i]);
+		}
+		
+	}
 }
