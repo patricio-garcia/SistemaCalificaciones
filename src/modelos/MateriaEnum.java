@@ -1,4 +1,4 @@
-package modelo;
+package modelos;
 
 public enum MateriaEnum {
 	MATEMATICAS,

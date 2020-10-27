@@ -2,7 +2,8 @@ package main;
 
 import vistas.MenuTemplate;
 import java.util.Scanner;
-import modelo.MateriaEnum;
+
+import modelos.MateriaEnum;
 
 public class Main {
 	

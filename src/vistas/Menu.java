@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import modelo.Alumno;
+import modelos.Alumno;
 import utilidades.Utilidad;
 
 import servicios.AlumnoServicio;
@@ -17,6 +17,7 @@ import servicios.ArchivoServicio;
 public class Menu extends MenuTemplate {
 	AlumnoServicio alumnoServicio = new AlumnoServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
+	List<Alumno> listaAlumnos;
 	String filePath = "C:\\Users\\Patricio\\eclipse-workspace\\SistemaCalificaciones\\src\\input\\";
 	String fileName = "notas.csv";
 	Scanner reader = new Scanner(System.in);
@@ -30,29 +31,26 @@ public class Menu extends MenuTemplate {
 			
 			switch (resultado) {
 			case 1: 
-				System.out.println("opcion 1....");
-				Utilidad.cleanScreen();
+				System.out.println("opcion 2....");
 				break;
 			case 2:
-				System.out.println("opcion 2....");
-				Utilidad.cleanScreen();
+				AlumnoServicio listar = new AlumnoServicio();
+				listar.listarAlumnos(listaAlumnos);
 				break;
 			case 3:
 				System.out.println("opcion 3....");
-				Utilidad.cleanScreen();
 				break;
 			case 4:
-				List<Alumno> listaAlumnos = cargarDatos(filePath, fileName);
-				System.out.println(listaAlumnos);
-				Utilidad.cleanScreen();
+				listaAlumnos = cargarDatos(filePath, fileName);
+				if  (!listaAlumnos.isEmpty()) {
+					Utilidad.showMessage("Archivo cargado con éxito");
+				}
 				break;
 			case 5:
 				System.out.println("opcion 5....");
-				Utilidad.cleanScreen();
 				break;
 			case 6:
 				System.out.println("opcion 6....");
-				Utilidad.cleanScreen();
 				break;
 			case 7:
 				Utilidad.cleanScreen();
@@ -73,7 +71,7 @@ public class Menu extends MenuTemplate {
 			br = new BufferedReader(fr);
 			return br.lines().map(line -> line.split(",")).map(values -> new Alumno(values[0], values[1], values[2], 
 					Double.parseDouble(values[3]))).collect(Collectors.toList());
-		} catch (Exception e) {
+		} catch (Exception error) {
 				Utilidad.showMessage("No se pudo cargar el archivo");
 		} finally {
 			try {
@@ -86,12 +84,4 @@ public class Menu extends MenuTemplate {
 		}
 		return null;
 	}
-	
-	/*private static void transformarLinea(String linea, List<Alumno> listaAlumnos) {
-		String[] tmp = linea.split(",");
-		for (int i = 0; i < tmp.length; i++) {
-			listaAlumnos.add(tmp[i]);
-		}
-		
-	}*/
 }
