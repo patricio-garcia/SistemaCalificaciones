@@ -1,22 +1,28 @@
 package modelo;
 
-import java.util.List;
-
 public class Alumno {
 	private String rutAlumno;
 	private String nombreAlumno;
 	private String apellidoAlumno;
 	private String direccionAlumno;
-	private List<String> listaMaterias;
+	private String materiaAlumno;
+	private Double notaAlumno;
 	
 	public Alumno() {}
 	
-	public Alumno(String rut, String nombre, String apellido, String direccion, List<String> listaMaterias) {
+	public Alumno(String rut, String nombre, String materia, Double nota) {
+		this.rutAlumno = rut;
+		this.nombreAlumno = nombre;
+		this.materiaAlumno = materia;
+		this.notaAlumno = nota;
+	}
+	
+	public Alumno(String rut, String nombre, String apellido, String direccion, String materia) {
 		this.rutAlumno = rut;
 		this.nombreAlumno = nombre;
 		this.apellidoAlumno = apellido;
 		this.direccionAlumno = direccion;
-		this.listaMaterias = listaMaterias;
+		this.materiaAlumno = materia;
 	}
 
 	public String getRutAlumno() {
@@ -51,12 +57,28 @@ public class Alumno {
 		this.direccionAlumno = direccionAlumno;
 	}
 
-	public List<String> getListaMaterias() {
-		return listaMaterias;
+	public String getmateriaAlumno() {
+		return materiaAlumno;
 	}
 
-	public void setListaMaterias(List<String> listaMaterias) {
-		this.listaMaterias = listaMaterias;
+	public void setmateriaAlumno(String materia) {
+		this.materiaAlumno = materia;
 	}
+	
+	public Double getnotaAlumno() {
+		return notaAlumno;
+	}
+
+	public void setnotaAlumno(Double nota) {
+		this.notaAlumno = nota;
+	}
+
+	@Override
+	public String toString() {
+			return "Alumno [rutAlumno=" + rutAlumno + ", nombreAlumno=" + nombreAlumno + 
+				", materiaAlumno=" + materiaAlumno + ", notaAlumno=" + notaAlumno + "]";
+	}
+	
+	
 	
 }

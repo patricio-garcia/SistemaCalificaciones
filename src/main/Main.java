@@ -10,8 +10,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		MenuTemplate menu= new MenuTemplate();
-		menu.iniciarMenu();
+		
+		MenuTemplate.iniciarMenu();
 		
 		/*
 		MateriaEnum asignatura = MateriaEnum.MATEMATICAS;

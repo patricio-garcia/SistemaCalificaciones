@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import modelo.Alumno;
 import utilidades.Utilidad;
 
 import servicios.AlumnoServicio;
@@ -39,7 +42,8 @@ public class Menu extends MenuTemplate {
 				Utilidad.cleanScreen();
 				break;
 			case 4:
-				cargarDatos(filePath, fileName);
+				List<Alumno> listaAlumnos = cargarDatos(filePath, fileName);
+				System.out.println(listaAlumnos);
 				Utilidad.cleanScreen();
 				break;
 			case 5:
@@ -58,8 +62,8 @@ public class Menu extends MenuTemplate {
 		} while (!continuar);
 	}
 	
-	public List<String> cargarDatos(String filePath, String fileName) {
-		List<String> listaAlumnos = new ArrayList<String>();
+	public List<Alumno> cargarDatos(String filePath, String fileName) {
+		List<Alumno> listaAlumnos = new ArrayList<Alumno>();
 		String file = filePath + fileName;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -67,30 +71,27 @@ public class Menu extends MenuTemplate {
 		try {
 			fr = new FileReader(new File(file));
 			br = new BufferedReader(fr);
-			String linea;
-			while ((linea = br.readLine()) != null) {
-				transformarLinea(linea, listaAlumnos);
-			}
+			return br.lines().map(line -> line.split(",")).map(values -> new Alumno(values[0], values[1], values[2], 
+					Double.parseDouble(values[3]))).collect(Collectors.toList());
 		} catch (Exception e) {
-				e.printStackTrace();
+				Utilidad.showMessage("No se pudo cargar el archivo");
 		} finally {
 			try {
 				if (null != fr) {
 					fr.close();
 				}
 			} catch (Exception error) {
-				error.printStackTrace();
+				Utilidad.showMessage("No se pudo cerrar el archivo");;
 			}
 		}
-		System.out.println(listaAlumnos);
 		return null;
 	}
 	
-	private static void transformarLinea(String linea, List<String> listaAlumnos) {
+	/*private static void transformarLinea(String linea, List<Alumno> listaAlumnos) {
 		String[] tmp = linea.split(",");
 		for (int i = 0; i < tmp.length; i++) {
 			listaAlumnos.add(tmp[i]);
 		}
 		
-	}
+	}*/
 }

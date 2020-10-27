@@ -1,14 +1,14 @@
 package vistas;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import utilidades.Utilidad;
 
-public class MenuTemplate {
+
+public abstract class MenuTemplate {
+	
+	public MenuTemplate() {}
 	
 	public static void iniciarMenu() {
 		List<String> opcionesMenu = new ArrayList<String>();
