@@ -49,6 +49,7 @@ public class ArchivoServicio {
 	public void exportarDatos(String fileName, List<Alumno> listaAlumnos) {
 		Utilidad.showMessage("--------------------------------------------- ExportarDatos");
 		Utilidad.showMessage("Ingresa la ruta en donde se encuentra el archivo notas.csv :");
+		String cvsSeparatorValue = ",";
 		String filePath = reader.nextLine();
 		String file = filePath + "/" + fileName;
 		File fl  = new File(file);
@@ -58,7 +59,14 @@ public class ArchivoServicio {
 		
 		try {
 			PrintWriter pWriter = new PrintWriter(new FileWriter(file));
-			listaAlumnos.forEach(value -> pWriter.println(value));
+			
+			listaAlumnos.forEach(alumno -> {
+		        pWriter.append(alumno.getRutAlumno()).append(cvsSeparatorValue)
+		              .append(alumno.getNombreAlumno()).append(cvsSeparatorValue)
+		              .append(alumno.getmateriaAlumno()).append(cvsSeparatorValue)
+		              .append(alumno.getnotaAlumno().toString()).append(System.lineSeparator());
+			});
+			//listaAlumnos.forEach(value -> pWriter.println(value));
 			pWriter.close();
 			Utilidad.showMessage("Datos exportados correctamente.");
 		}
@@ -67,7 +75,6 @@ public class ArchivoServicio {
 		} finally {
 			Utilidad.showMessage("---------------------------------------------");
 		}
-		
 	}
 
 }

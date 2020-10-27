@@ -77,8 +77,5 @@ public class Alumno {
 	public String toString() {
 			return "Alumno [rutAlumno=" + rutAlumno + ", nombreAlumno=" + nombreAlumno + 
 				", materiaAlumno=" + materiaAlumno + ", notaAlumno=" + notaAlumno + "]";
-	}
-	
-	
-	
+	}	
 }

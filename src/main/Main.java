@@ -14,24 +14,6 @@ public class Main {
 		
 		MenuTemplate.iniciarMenu();
 		
-		/*
-		MateriaEnum asignatura = MateriaEnum.MATEMATICAS;
-		
-		Scanner reader = new Scanner(System.in);
-		System.out.print("Ingrese tipo materia");
-		int respuesta = reader.nextInt();
-		MateriaEnum[] valor = MateriaEnum.values();
-		
-		for (int i = 0; i < valor.length; i++) {
-			if (respuesta == valor[i].ordinal()) {
-				System.out.println("Son iguales");
-			}
-		}
-		
-		//MateriaEnum valor = MateriaEnum.valueOf(respuesta);
-		//System.out.println(valor);
-		 * 
-		 */
 	}
 
 }

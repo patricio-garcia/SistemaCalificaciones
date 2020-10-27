@@ -1,5 +1,11 @@
 package utilidades;
 
+import java.net.CookieManager;
+import java.util.Iterator;
+import java.util.List;
+
+import modelos.Alumno;
+
 public class Utilidad {
 
 	public static void showMessage(String message) {
