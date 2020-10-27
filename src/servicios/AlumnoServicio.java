@@ -3,18 +3,26 @@ package servicios;
 import java.util.List;
 
 import modelos.Alumno;
+import utilidades.Utilidad;
 
 public class AlumnoServicio {
-	private List<Alumno> listaAlumnos;
-
 	public void listarAlumnos(List<Alumno> listaAlumnos) {
-		for (Alumno alumno : listaAlumnos) {
-			String notaAlummno = alumno.getnotaAlumno().toString();
-			System.out.println("");
-			System.out.println("Alumno: " + alumno.getRutAlumno() + " - " + alumno.getNombreAlumno());
-			System.out.print("Maetia: " + alumno.getmateriaAlumno() + " - " );
-			System.out.println(notaAlummno);
+		Utilidad.showMessage("--------------------------------------------- Listar Alumnos");
+		if (!listaAlumnos.isEmpty()) {
+			for (Alumno alumno : listaAlumnos) {
+				Utilidad.showMessage("");
+				Utilidad.showMessage("Datos Alumno:");
+				Utilidad.showMessage("RUT: " + alumno.getRutAlumno());
+				Utilidad.showMessage("Nombre: " + alumno.getNombreAlumno());
+				Utilidad.showMessage("Materia: " + alumno.getmateriaAlumno());
+				String notaAlummno = alumno.getnotaAlumno().toString();
+				Utilidad.showMessage("Nota: " + notaAlummno);
+			}
+			Utilidad.showMessage("---------------------------------------------");
 
+		} else {
+			Utilidad.showMessage("No se puede listar los Alumnos, aún no carga datos");
 		}
+		Utilidad.stopAndContinue();
 	}
 }

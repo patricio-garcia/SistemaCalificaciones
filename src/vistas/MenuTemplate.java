@@ -30,29 +30,22 @@ public abstract class MenuTemplate {
 		for (int i = 0; i < largo; i++) {
 			System.out.println(i+1 + " " + opcionesMenu.get(i));
 		}
-		return seleccionValida(largo);
-	}
-	
-	private int seleccionValida(int largo) {
+		
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(System.in);
 		int opcion = 0;
-		boolean valida = false;
-		while(!valida) {
-			Utilidad.showMessage("Ingrese una opción: ");;
-			try {
-				opcion =  reader.nextInt();	
-			} catch (Exception error) {
-				reader.nextLine();
-			}
-			
-			if (opcion < 1 || opcion >= largo+1) {
-				Utilidad.showMessage("Opción inválida, intente de nuevo");
-			} else {
-				valida = true;
-			}
+		Utilidad.showMessage("Ingrese una opción: ");;
+		try {
+			opcion =  reader.nextInt();	
+		} catch (Exception error) {
+			reader.nextLine();
 		}
-		return opcion;
+		if (opcion < 1 || opcion >= largo+1) {
+			Utilidad.showMessage("--------------------------------------------- Selección no permitida");
+		} else {
+			return opcion;
+		}
+		return 0;
 	}
 	
 }

@@ -18,7 +18,6 @@ public class Menu extends MenuTemplate {
 	AlumnoServicio alumnoServicio = new AlumnoServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
 	List<Alumno> listaAlumnos;
-	String filePath = "C:\\Users\\Patricio\\eclipse-workspace\\SistemaCalificaciones\\src\\input\\";
 	String fileName = "notas.csv";
 	Scanner reader = new Scanner(System.in);
 	
@@ -31,7 +30,8 @@ public class Menu extends MenuTemplate {
 			
 			switch (resultado) {
 			case 1: 
-				System.out.println("opcion 2....");
+				System.out.println("opcion 1....");
+				Utilidad.stopAndContinue();
 				break;
 			case 2:
 				AlumnoServicio listar = new AlumnoServicio();
@@ -39,30 +39,39 @@ public class Menu extends MenuTemplate {
 				break;
 			case 3:
 				System.out.println("opcion 3....");
+				Utilidad.stopAndContinue();
 				break;
 			case 4:
-				listaAlumnos = cargarDatos(filePath, fileName);
-				if  (!listaAlumnos.isEmpty()) {
-					Utilidad.showMessage("Archivo cargado con éxito");
-				}
+				System.out.println("opcion 4....");
+				Utilidad.stopAndContinue();
 				break;
 			case 5:
-				System.out.println("opcion 5....");
+				listaAlumnos = cargarDatos(fileName);
+				if  (!listaAlumnos.isEmpty()) {
+					Utilidad.showMessage("Datos cargados correctamente.");
+					Utilidad.showMessage("---------------------------------------------");
+					Utilidad.stopAndContinue();
+				}
 				break;
 			case 6:
 				System.out.println("opcion 6....");
+				Utilidad.stopAndContinue();
 				break;
 			case 7:
-				Utilidad.cleanScreen();
 				Utilidad.showMessage("Abandanonando el Sistema de Calificaciones...");
+				Utilidad.stopAndContinue();
+				Utilidad.showMessage("Ya ha salido del Sistema");
 				continuar = true;
 			}
 		} while (!continuar);
 	}
 	
-	public List<Alumno> cargarDatos(String filePath, String fileName) {
+	public List<Alumno> cargarDatos(String fileName) {
 		List<Alumno> listaAlumnos = new ArrayList<Alumno>();
-		String file = filePath + fileName;
+		Utilidad.showMessage("--------------------------------------------- Cargar Datos");
+		Utilidad.showMessage("Ingresa la ruta en donde se encuentra el archivo notas.csv :");
+		String filePath = reader.nextLine();
+		String file = filePath + "/" + fileName;
 		FileReader fr = null;
 		BufferedReader br = null;
 		
