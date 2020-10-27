@@ -17,6 +17,13 @@ public class Alumno {
 		this.notaAlumno = nota;
 	}
 	
+	public Alumno(String rut, String nombre, String apellido, String direccion) {
+		this.rutAlumno = rut;
+		this.nombreAlumno = nombre;
+		this.apellidoAlumno = apellido;
+		this.direccionAlumno = direccion;
+	}
+	
 	public Alumno(String rut, String nombre, String apellido, String direccion, String materia) {
 		this.rutAlumno = rut;
 		this.nombreAlumno = nombre;

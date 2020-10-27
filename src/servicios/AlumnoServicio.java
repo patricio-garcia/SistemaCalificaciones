@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 import modelos.Alumno;
@@ -29,5 +30,27 @@ public class AlumnoServicio {
 			Utilidad.showMessage("No se puede listar los Alumnos, aún no carga datos");
 		}
 		Utilidad.stopAndContinue();
+	}
+	
+	public Alumno crearAlumno() {
+		Scanner reader = new Scanner(System.in);
+		
+		String materiaAlumno;
+		Utilidad.showMessage("--------------------------------------------- Crear Alumno");
+		Utilidad.showMessage("Ingresa RUT: ");
+		String rutAlumno = reader.nextLine();
+		Utilidad.showMessage("Ingresa nombre: ");
+		String nombreAlumno = reader.nextLine();
+		Utilidad.showMessage("Ingresa apellido: ");
+		String apellidoAlumno = reader.nextLine();
+		Utilidad.showMessage("Ingresa dirección: ");
+		String direccionAlumno = reader.nextLine();
+		Utilidad.showMessage("---------------------------------------------");
+		return pasarAlumno(rutAlumno, nombreAlumno, apellidoAlumno, direccionAlumno);
+	}
+	
+	public static Alumno pasarAlumno(String rutAlumno, String nombreAlumno, String apellidoAlumno, String direccionAlumno) {
+		Alumno alumno = new Alumno(rutAlumno, nombreAlumno, apellidoAlumno, direccionAlumno);
+		return alumno;
 	}
 }

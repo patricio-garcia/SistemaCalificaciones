@@ -24,7 +24,8 @@ public class Menu extends MenuTemplate {
 			
 			switch (resultado) {
 			case 1: 
-				System.out.println("opcion 1....");
+				listaAlumnos.add(alumnoServicio.crearAlumno());
+				System.out.println(listaAlumnos);
 				Utilidad.stopAndContinue();
 				break;
 			case 2:
